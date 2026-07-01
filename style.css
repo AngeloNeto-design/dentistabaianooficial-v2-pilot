@@ -179,24 +179,52 @@ em.script {
   background-size: 22px 22px;
   opacity: 0.12;
 }
-.hero-panel-mark {
-  position: relative; z-index: 1;
-  width: 168px; height: 168px;
-  border-radius: 50%;
-  border: 2px solid color-mix(in srgb, var(--paper) 45%, transparent);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 3.4rem;
-  color: var(--paper);
+.hero-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-panel-scrim {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.55) 100%);
 }
 .hero-panel-tag {
-  position: absolute; z-index: 1; bottom: 34px; left: 0; right: 0;
+  position: absolute; z-index: 2; bottom: 34px; left: 0; right: 0;
   text-align: center;
   font-family: var(--font-script);
   font-style: italic;
   font-size: 1.3rem;
   color: var(--paper);
+}
+
+/* illustrative photo badge */
+.photo-badge {
+  position: absolute; z-index: 2; top: 16px; left: 16px;
+  background: rgba(20,20,18,0.72);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(3px);
+  white-space: nowrap;
+}
+.photo-badge.badge-bottom { top: auto; left: auto; bottom: 16px; right: 16px; }
+
+/* Nosso espaço - photo showcase */
+.space-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.space-photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.14);
+}
+.space-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.space-photo.arch-top { border-radius: 200px 200px 16px 16px; }
+.space-photo.arch-bottom { border-radius: 16px 16px 200px 200px; margin-top: 56px; }
+.space-caption {
+  position: absolute; z-index: 2; bottom: 20px; left: 20px;
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: 1.1rem; color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
 }
 
 .hero-wave { position: relative; margin-top: 46px; }
@@ -252,9 +280,20 @@ em.script {
 /* Reviews */
 .reviews-wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 50px; align-items: stretch; }
 .reviews-arch {
+  position: relative;
   border-radius: 260px 260px 0 0;
   background: var(--primary);
   color: var(--paper);
+  overflow: hidden;
+  min-height: 380px;
+}
+.reviews-arch > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reviews-arch-scrim {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(18,20,15,0.15) 30%, rgba(18,20,15,0.82) 100%);
+}
+.reviews-arch-content {
+  position: relative; z-index: 2;
   padding: 60px 32px 44px;
   text-align: center;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
@@ -316,6 +355,7 @@ em.script {
 .footer-social svg { width: 17px; height: 17px; }
 .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 22px; font-size: 0.82rem; font-family: var(--font-mono); }
 .footer-bottom a:hover { color: var(--accent); }
+.footer-disclaimer { margin: 18px 0 0; font-size: 0.78rem; opacity: 0.55; max-width: 640px; }
 
 /* Floating WhatsApp */
 .wa-float {
@@ -337,6 +377,8 @@ em.script {
   .hero-panel { border-radius: 260px 260px 0 0; min-height: 300px; margin-top: 20px; }
   .service-row { grid-template-columns: 50px 1fr; }
   .service-row p { grid-column: 2 / 3; }
+  .space-grid { grid-template-columns: 1fr; }
+  .space-photo.arch-bottom { margin-top: 0; }
   .why-grid { grid-template-columns: 1fr; }
   .reviews-wrap { grid-template-columns: 1fr; }
   .location-wrap { grid-template-columns: 1fr; }
