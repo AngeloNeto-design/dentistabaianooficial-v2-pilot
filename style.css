@@ -226,6 +226,19 @@ em.script {
   font-size: 1.1rem; color: #fff;
   text-shadow: 0 2px 12px rgba(0,0,0,0.5);
 }
+.space-grid-single { max-width: 640px; margin: 0 auto; }
+.space-grid-single .space-photo { min-height: 460px; }
+
+/* Nossa equipe */
+.team-wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; }
+.team-photo {
+  border-radius: 240px 240px 16px 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.16);
+}
+.team-photo img { width: 100%; display: block; object-fit: cover; }
+.team-copy h2 { margin: 14px 0 16px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.team-copy p { font-size: 1.02rem; }
 
 .hero-wave { position: relative; margin-top: 46px; }
 
@@ -379,6 +392,8 @@ em.script {
   .service-row p { grid-column: 2 / 3; }
   .space-grid { grid-template-columns: 1fr; }
   .space-photo.arch-bottom { margin-top: 0; }
+  .team-wrap { grid-template-columns: 1fr; }
+  .team-photo { border-radius: 200px 200px 16px 16px; }
   .why-grid { grid-template-columns: 1fr; }
   .reviews-wrap { grid-template-columns: 1fr; }
   .location-wrap { grid-template-columns: 1fr; }
